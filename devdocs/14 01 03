@@ -1,0 +1,12 @@
+I've been reading my development documentation from when I made Detla recently. It really high lights how valuable this can be, particularly whent he time comes for decissions to be made.
+
+Right now the decission I need to make is how to make the snake such that it moves forward and redraws the rest of it.
+
+what I've decided on is a list. I can specify a length that the snake is supposed to be. I will create sections of the snake that get redrawn ever frame. And every frame when the snake progresses forward, a new section will be put into the list and an old section will be popped off the end. 
+
+And like that I'm done! I've got all of the major features of a snake game:
+Direct a snake
+Eat apples
+Snake gets longer (and in some cases faster) the more apples it eats.
+Snake dies if it bites itself
+Snake dies if it hits a wall.
