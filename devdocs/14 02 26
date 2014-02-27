@@ -1,0 +1,5 @@
+So I've got a version of snake rolling. Not the most elegant way of doing it, but it works and it is all one file and it is simple. So on to the next one which will similarly be all in one file, and I'll try to keep it as straight forward as possible.
+
+Pong.
+
+I tried to be clever and easy and simply let repeating events be press and hold, but that doesn't work when you have multiple keys. So. I've got to come up with something else. But building off of the fondation of snake has worked really well. I've gone with classes this time though. It is a little more effort, but scales better. I have a Pddle, Puck, and Score.
