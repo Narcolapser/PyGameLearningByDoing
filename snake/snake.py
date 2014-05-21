@@ -41,6 +41,7 @@ def moveSnake(snakeBody):
 	while len(snakeBody) > snakeLength:
 		snakeBody.pop()
 	return snakeBody
+
 def snakeCollidesApple(snakeBody,apple):
 	collide = False
 	for s in snakeBody:
