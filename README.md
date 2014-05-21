@@ -27,8 +27,8 @@ I will now list the programs available in this repository. They are ordered from
 
 ##Planned Programs
 
-###.4 Missle Control
-###.5 Hyperoid
-###.6 Tower Defense
-###.7 Copter Rescue
-###.8 Space Times
+###4. Missle Control
+###5. Hyperoid
+###6. Tower Defense
+###7. Copter Rescue
+###8. Space Times
