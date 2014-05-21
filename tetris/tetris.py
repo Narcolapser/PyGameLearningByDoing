@@ -22,7 +22,12 @@ class Paddle:
 		pygame.draw.rect(surface,white,self.rect,0)
 	
 	def move(self,direction):
-		self.rect.move_ip(0,direction)
+		if self.y > 30 and direction < 0:
+			self.rect.move_ip(0,direction)
+			self.y += direction
+		elif self.y < 450 and direction > 0:
+			self.rect.move_ip(0,direction)
+			self.y += direction
 
 class Puck:
 	def __init__(self,x,y,sx,sy):
@@ -34,23 +39,34 @@ class Puck:
 	
 	def draw(self,surface):
 		white = pygame.Color(255,255,255)
-		pygame.draw.circle(surface,white,(self.x,self.y),self.size,0)
+		pygame.draw.circle(surface,white,(int(self.x),int(self.y)),self.size,0)
 	
 	def move(self):
-		pass
-
-class Score:
-	def __init__(self,x,y):
-		self.x = x
-		self.y = y
-		self.value = 0
+		if self.y > 475:
+			self.y = 475 - (self.y - 475)
+			self.sy *= -1
+		
+		if self.y < 5:
+			self.y = self.y + 5
+			self.sy *= -1
+		
+		if self.x > 635:
+			return 1
+		
+		if self.x < 5:
+			return -1
+		
+		self.x += self.sx
+		self.y += self.sy
+		
+		return 0
 	
-	def draw(self):
-		pass
-	
-	def inc(self):
-		self.value += 1
-
+	def puckCollidesPaddle(self,paddle):
+		if abs(self.x - paddle.x) < 5:
+			if abs(self.y - paddle.y) < 55:
+				self.sx *= -1.1
+				self.sy += (self.y - paddle.y)/50.0
+				self.x += self.sx
 
 pygame.init()
 
@@ -62,28 +78,41 @@ pygame.display.set_caption('Beep boop use w and s and up arrow and down arrow')
 
 leftPaddle = Paddle(10,240)
 rightPaddle = Paddle(630,240)
-speed = 60
+puck = Puck(320,240,2,2)
+speed = 120
 
 quit = False
 while not quit:
-	events = pygame.event.get()
+#	events = pygame.event.get()
+	pygame.event.pump()
+	keys = pygame.key.get_pressed()
 	window.fill((0,0,0))
-	for event in events:
-		if event.type == KEYDOWN:
-			if event.key == K_q:
-				quit = True
-			if event.key == K_s:
-				leftPaddle.move(5)
-			if event.key == K_w:
-				leftPaddle.move(-5)
-			if event.key == K_DOWN:
-				rightPaddle.move(5)
-			if event.key == K_UP:
-				rightPaddle.move(-5)
+
+	if keys[K_q]:
+		quit = True
+	if keys[K_s]:
+		leftPaddle.move(5)
+	if keys[K_w]:
+		leftPaddle.move(-5)
+	if keys[K_DOWN]:
+		rightPaddle.move(5)
+	if keys[K_UP]:
+		rightPaddle.move(-5)
+	
+	scored = puck.move()
+	if scored != 0:
+		if scored == 1:
+			print "Left wins."
+		if scored == -1:
+			print "AWH YEA RIGHT! YOU ARE AWESOME!"
+		quit = True
+	puck.puckCollidesPaddle(leftPaddle)
+	puck.puckCollidesPaddle(rightPaddle)
 	
 	leftPaddle.draw(window)
 	rightPaddle.draw(window)
-#	leftPaddle.move(5)
+	puck.draw(window)
+
 	
 	pygame.display.update()
 	fps.tick(speed)
