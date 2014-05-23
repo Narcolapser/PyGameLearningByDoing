@@ -1,0 +1,34 @@
+Ok. So I'm now begining work on tetris. Laughable how I figured I might have all the projects done by now. So thus begins tetris consideration.
+
+With this project I want to now go into really leveraging object oriented design. So objects that I will have are:
+
+Block:
+	Contains block color
+	Location
+	Methods concerned with drawing
+
+Peice:
+	Managing a group of blocks as they decend
+	Methods for movement
+	methods for rotation
+
+Board:
+	Managing blocks that have settled
+	providing collision information to peices
+	detecting completed rows
+
+Score:
+	keep count
+	draw the score value
+
+Music:
+	Tunes management. probably just a wrapper class.
+
+Sound_Effect:
+	probably also a wrapper. Might be the same class as music.
+	tends to sound effects.
+
+Game:
+	master class. tends to the game reactor.
+
+With these classes, and some glue code, I should be able to make the majority of the tetris game. Alright. onward!
