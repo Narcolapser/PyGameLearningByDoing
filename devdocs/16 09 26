@@ -1,0 +1,5 @@
+When I discovered that PyGame didn't seem to be under active development, I lost interest in this project. Just a few days ago I started becoming aware of a framework called "Kivy" and created my first python android app. Oh my gosh was it such a breeze! I've tried making things using the official android libraries and have nearly gone bald everytime I try. With this I have re-kindled my interest in Learning By Doing. Specifically I'm going to make these games so that they work on android now as well!
+
+Also. Kivy is built on Pygame. So put no value in my comment about pygame not being actively developed. At time of writing Pygame justed had a minor release it would seem. Still very much so in development.
+
+So, starting over. Pong. Two player pong! This should be fun!
