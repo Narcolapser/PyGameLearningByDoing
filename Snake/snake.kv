@@ -1,0 +1,39 @@
+#:kivy 1.9.1
+
+<SnakeGame>:
+    apple: snake_apple
+    snake: snake_snake
+
+    Apple:
+        id: snake_apple
+
+    Snake:
+        id: snake_snake
+        center: self.parent.center
+
+<Apple>:
+    size: 10,10
+    canvas:
+        Color:
+            rgb: 1,0,0
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<Snake>:
+    size: 10,10
+    canvas:
+        Color:
+            rgb: 0,1,0
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<SnakeSegment>:
+    size: 10,10
+    canvas:
+        Color:
+            rgb: 0,1,0
+        Ellipse:
+            pos: self.pos
+            size: self.size
