@@ -1,5 +1,27 @@
 #:kivy 1.9.1
 
+<MenuScreen>:
+    FloatLayout:
+        size: root.size
+        Label:
+            font_size: 70
+            text: "SNAKE GAME! WOOOH!"
+            size_hint: 0.75,0.25
+            pos_hint: {'x':0.125,'y':0.5}
+
+        Button:
+            text: "PLAY!"
+            size_hint: 0.5,0.25
+            pos_hint: {'x':0.25,'y':0.15}
+            #on_release: root.manager.current = 'snake'
+            on_release: root.load_game()
+
+
+<GameScreen>:
+    on_pre_enter: self.start()
+    #on_enter: self.start()
+    on_leave: self.end()
+
 <SnakeGame>:
     apple: snake_apple
     snake: snake_snake
@@ -9,7 +31,11 @@
 
     Snake:
         id: snake_snake
+
+    Label:
+        font_size: 70
         center: self.parent.center
+        text: str(root.apple_count)
 
 <Apple>:
     size: 10,10
